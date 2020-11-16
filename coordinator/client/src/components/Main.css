@@ -1,0 +1,26 @@
+.main_cont {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.left_cont {
+    position: fixed;
+    width: 20vw;
+    left: 0vw;
+    height: 100vh;
+    top: 0vh;
+    background-color: beige;
+    /*
+    background-color: ;
+    color: ;
+    */
+}
+
+.right_cont {
+    position: fixed;
+    width: 70vw;
+    margin-right: 5vw;
+    height: 100vh;
+    top: 0vh;
+}
