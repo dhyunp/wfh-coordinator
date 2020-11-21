@@ -97,20 +97,6 @@
 					</execution>
 
 					<execution>
-						<id>yarn test</id>
-						<goals>
-							<goal>yarn</goal>
-						</goals>
-						<phase>test</phase>
-						<configuration>
-							<arguments>test</arguments>
-							<environmentVariables>
-								<CI>true</CI>
-							</environmentVariables>
-						</configuration>
-					</execution>
-
-					<execution>
 						<id>yarn build</id>
 						<goals>
 							<goal>yarn</goal>
@@ -119,6 +105,25 @@
 						<configuration>
 							<arguments>build</arguments>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<configuration>
+							<target>
+								<copy todir="${project.build.directory}/classes/public">
+									<fileset dir="${project.basedir}/client/build" />
+								</copy>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
