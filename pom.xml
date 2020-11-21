@@ -62,9 +62,65 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
 				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.9.1</version>
+				<configuration>
+					<workingDirectory>client</workingDirectory>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>install node and yarn</id>
+						<goals>
+							<goal>install-node-and-yarn</goal>
+						</goals>
+						<!--optional-->
+						<phase>generate-resources</phase>
+
+						<configuration>
+							<nodeVersion>v12.18.3</nodeVersion>
+							<yarnVersion>v1.22.5</yarnVersion>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>yarn install</id>
+						<goals>
+							<goal>yarn</goal>
+						</goals>
+						<configuration>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>yarn test</id>
+						<goals>
+							<goal>yarn</goal>
+						</goals>
+						<phase>test</phase>
+						<configuration>
+							<arguments>test</arguments>
+							<environmentVariables>
+								<CI>true</CI>
+							</environmentVariables>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>yarn start</id>
+						<goals>
+							<goal>yarn</goal>
+						</goals>
+						<phase>compile</phase>
+						<configuration>
+							<arguments>start</arguments>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
