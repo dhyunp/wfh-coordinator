@@ -111,13 +111,13 @@
 					</execution>
 
 					<execution>
-						<id>yarn start</id>
+						<id>yarn build</id>
 						<goals>
 							<goal>yarn</goal>
 						</goals>
 						<phase>compile</phase>
 						<configuration>
-							<arguments>start</arguments>
+							<arguments>build</arguments>
 						</configuration>
 					</execution>
 				</executions>
