@@ -110,20 +110,22 @@
 			</plugin>
 
 			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
+				<artifactId>maven-resources-plugin</artifactId>
 				<executions>
 					<execution>
-						<phase>generate-resources</phase>
-						<configuration>
-							<target>
-								<copy todir="${project.build.directory}/classes/public">
-									<fileset dir="${project.basedir}/client/build" />
-								</copy>
-							</target>
-						</configuration>
+						<id>copy-resources</id>
+						<phase>process-classes</phase>
 						<goals>
-							<goal>run</goal>
+							<goal>copy-resources</goal>
 						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes/static</outputDirectory>
+							<resources>
+								<resource>
+									<directory>client/build</directory>
+								</resource>
+							</resources>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
