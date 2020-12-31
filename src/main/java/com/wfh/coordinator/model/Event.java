@@ -1,31 +1,28 @@
 package com.wfh.coordinator.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import java.time.LocalDateTime;
+
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Set;
-import java.time.Instant;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@Entity
+@Document(collection = "Event")
 public class Event {
 
     @Id
-    @GeneratedValue
-    private Long id;
-    private Instant date;
-    private String title;
-    private String description;
-    @ManyToMany
-    private Set<User> attendees;
+    private int id;
+    private String eventName;
+    private String importance;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime eventDate;
 }
